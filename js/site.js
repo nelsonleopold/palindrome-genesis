@@ -7,6 +7,8 @@ function getMessage() {
     if (msg !== '') {
         // convert to lowercase
         msg = msg.toLowerCase();
+        // remove spaces
+        msg = msg.replace(/\s+/g, '');
 
         // check to see if palindrome
         let message = palindromeChecker(msg);
@@ -23,7 +25,7 @@ function palindromeChecker(message) {
 
     let msg = message;
     let revMsg = "";
-    revMsg = message.split("").reverse().join("");
+    revMsg = msg.split("").reverse().join("");
     let isPalindrome = true;
 
     for (let i = 0; i < message.length - 1; i++) {
