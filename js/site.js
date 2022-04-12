@@ -7,7 +7,8 @@ function getMessage() {
     if (msg !== '') {
         // convert to lowercase
         msg = msg.toLowerCase();
-        // remove spaces
+
+        // remove spaces and special characters using regex
         msg = msg.replace(/[^A-Z0-9]/ig, '');
 
         // check to see if palindrome
@@ -15,7 +16,7 @@ function getMessage() {
 
         displayMessage(message, msg);
         clrInputBox();
-    } else {
+    } else { // if the string is empty
         alert("Please enter some text. Otherwise I'll be sad.");
         clrInputBox();
     }
@@ -25,11 +26,16 @@ function palindromeChecker(message) {
 
     let msg = message;
     let revMsg = "";
+    // could also call reverse string function from other assignment
     revMsg = msg.split("").reverse().join("");
+
+    // boolean used to track if palindrome
     let isPalindrome = true;
 
-    for (let i = 0; i < message.length - 1; i++) {
-
+    // since palindrome is same backwards and forwards only need to check to halfway point
+    // loop halfway through the array
+    for (let i = 0; i < (message.length - 1) / 2; i++) {
+        // check if value at array and reversed array match at each index up to one half the length
         if (msg[i] != revMsg[i]) {
             isPalindrome = false;
             return isPalindrome;
@@ -40,37 +46,23 @@ function palindromeChecker(message) {
 
 // Final Step, display the information (view, displays stuff on screen)
 function displayMessage(isPalindrome, msg) {
+    // reverse the message for the output
+    let revMessage = msg.split("").reverse().join("");
+
+    // first get the element from the page
+    element = document.getElementById("results");
 
     if (isPalindrome == false) {
-        let revMessage = msg.split("").reverse().join("");
-        // first get the ol element from the page
-        element = document.getElementById("results");
-        // set the message for the li element
+        // set the message for the element when not a palindrome
         element.innerHTML = `The word is: ${msg}<br>
             The word reversed is: ${revMessage}<br>
             Sorry, I'm not a palindrome. :(`;
     } else {
-        let revMessage = msg.split("").reverse().join("");
-        element = document.getElementById("results");
+        // set the message for the element when a palindrome
         element.innerHTML = `The word is: ${msg}<br>
         The word reversed is: ${revMessage}<br>
         I'm a palindrome!!! :)`;
     }
-    // first get the ol element from the page
-
-
-    // styling
-    // // next create a new li element
-    // let item = document.createElement("li");
-
-    // // add classes to li element
-    // item.classList.add("list-group-item");
-
-    // set the message for the li element
-
-    // element.innerHTML = revMessage;
-
-    // element.appendChild(item);
 }
 
 function clrInputBox() {
