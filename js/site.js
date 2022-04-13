@@ -12,9 +12,9 @@ function getMessage() {
         msg = msg.replace(/[^A-Z0-9]/ig, '');
 
         // check to see if palindrome
-        let message = palindromeChecker(msg);
+        let isPalindrome = palindromeChecker(msg);
 
-        displayMessage(message, msg);
+        displayMessage(isPalindrome, msg);
         clrInputBox();
     } else { // if the string is empty
         alert("Please enter some text. Otherwise I'll be sad.");
@@ -26,6 +26,7 @@ function palindromeChecker(message) {
 
     let msg = message;
     let revMsg = "";
+
     // could also call reverse string function from other assignment
     revMsg = msg.split("").reverse().join("");
 
@@ -43,6 +44,30 @@ function palindromeChecker(message) {
     }
     return isPalindrome;
 }
+
+// reverse the string using a for loop instead
+// this could be used instead of built-in string methods
+// function reverseMessage(msg) {
+//     let revMessage = "";
+//     for (let i = msg.length - 1; i >= 0; i--) {
+//         let currentChar = msg[i];
+//         revMessage += currentChar;
+//     }
+
+//     return revMessage;
+// }
+
+// could create and use object instead
+// IsPalindrome - boolean
+// Original word
+// Reversed word
+// message
+let returnObject = {
+    message: "",
+    originalWord: originalWord,
+    reversedWord: "",
+    isPalindrome: false
+};
 
 // Final Step, display the information (view, displays stuff on screen)
 function displayMessage(isPalindrome, msg) {

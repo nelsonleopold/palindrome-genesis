@@ -120,6 +120,12 @@
 
     <script>
         document.getElementById("btnDisplayMessage").addEventListener("click", getMessage);
+        document.getElementById("txtMessage").addEventListener("keyup", function (event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                document.getElementById("btnDisplayMessage").click();
+            }
+        });
     </script>
 
 </body>
