@@ -72,3 +72,8 @@ main>.container {
     font-size: 2rem;
     font-weight: bold;
 }
+
+#results {
+    color: var(--nl-secondary-color)
+    
+}
